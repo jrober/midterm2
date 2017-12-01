@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Comments</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/frontapp.js"></script>
+
+</head>
+<body ng-app="comment" ng-controller="MainCtrl">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="page-header"> 
+  <h1>Store Management Interface </h1>
+</div>
+
+  <form ng-submit="addPost()" style = "margin-top30px;">
+    <div>
+    Product Name: <input type="text" ng-model="title"></input>
+    </div>
+    <div>
+    Price: <input type="text" ng-model="price"></input>
+    </div>
+    <div>
+    Picture URL: <input type="text" ng-model="url"></input>    
+    <button type="submit">Add Post</button>
+    </div>
+  </form>
+  <div>
+    {{test}}
+  </div>
+  <div ng-repeat="comment in comments | orderBy:title">
+    <span class="glyphicon glyphicon-remove" ng-click="delete(comment)"></span>
+    <!--<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>-->
+    {{comment.title}} - price: {{comment.price}} - ordered {{comment.ordered}} <img style="width:50px" ng-src="{{comment.url}}" alt="product" />
+  </div>
+</div>
+</div>
+</body>
+</html>

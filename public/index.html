@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Posts</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/frontapp.js"></script>
+
+</head>
+<body ng-app="comment" ng-controller="MainCtrl">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<div class="page-header"> 
+  <h1>Store Interface </h1>
+  <h1>Current Projects </h1>
+</div>
+
+  <div ng-repeat="comment in comments | orderBy:'title'">
+    <input type="checkbox" ng-model="comment.selected">      {{comment.title}} - price: {{comment.price}} <img style="width:50px" ng-src="{{comment.url}}" alt="product" />
+  </div>
+
+  <form ng-submit="submitPurchase()" style = "margin-top30px;">
+    <button type="submit">Submit Purchase</button>
+  </form>
+
+  <h1>
+    Shopping Cart
+  </h1>
+  <div ng-repeat="comment in comments | filter:cart">
+    <div ng-if="comment.cart === 1">
+          {{comment.title}} - price: {{comment.price}} <img style="width:50px" ng-src="{{comment.url}}" alt="product" />
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
